@@ -109,8 +109,8 @@ class MambaTrainer(Trainer):
         # https://huggingface.co/state-spaces/mamba-130m/blob/main/config.json
         json_str = """
 {
-    "d_model": 768,
-    "n_layer": 24,
+    "d_model": 1024,
+    "n_layer": 48,
     "vocab_size": 50277,
     "ssm_cfg": {},
     "rms_norm": true,
@@ -158,7 +158,7 @@ def run(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, default="state-spaces/mamba-130m")
+    parser.add_argument("--model", type=str, default="UphamProjects/mamba-chat_ultrachat370m-sft")
     parser.add_argument("--output", type=str, default="output")
     parser.add_argument("--tokenizer", type=str, default="EleutherAI/gpt-neox-20b")
     parser.add_argument("--learning_rate", type=float, default=5e-4)
