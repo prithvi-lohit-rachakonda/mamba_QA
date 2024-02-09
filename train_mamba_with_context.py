@@ -50,13 +50,7 @@ class SFTDataset(Dataset):
         print("Tokenizing dataset...")
         for ex in tqdm(examples):
             # Add a positive example
-            text = f"{ex['context']}\n\nQ: {ex['prompt']}\nA: {ex['response']}\n"
-            tokenized = tokenizer.encode(text)
-            all_input_ids.append(torch.LongTensor(tokenized))
-            
-            # Generate a negative example
-            random_ex = random.choice(examples)
-            text = f"{random_ex['context']}\n\nQ: {ex['prompt']}\nA: I don't know.\n"
+            text = f"User: {ex['input']}\nAssistant: {ex['output']}\n"
             tokenized = tokenizer.encode(text)
             all_input_ids.append(torch.LongTensor(tokenized))
 
